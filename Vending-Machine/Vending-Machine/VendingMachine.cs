@@ -3,15 +3,15 @@ namespace Vending_Machine
 {
 	public class VendingMachine
 	{
-		  public List<string> Commands { get; } = new List<string>
+		  public List<string> CustomerCommands { get; } = new List<string>
     {
-    
-        "choose",
+		"choose",
         "amount",
         "pay"
     };
 		public VendingMachine()
 		{
+
 		}
 	}
 }

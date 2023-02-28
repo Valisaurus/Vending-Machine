@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{1B55D5C9-3262-4D59-A447-D2B96051E4DF}|Default">
-  <MonoDevelop.Ide.ItemProperties.Vending-Machine FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Vending-Machine PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
 </Properties>

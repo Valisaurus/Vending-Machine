@@ -5,9 +5,8 @@ namespace Vending_Machine
 	{
 		public int Money { get; set; }
 
-		public void Bank()
+		public Bank()
 		{
-	
 		}
 
 	}

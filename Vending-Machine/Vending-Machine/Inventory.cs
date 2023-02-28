@@ -5,29 +5,65 @@ namespace Vending_Machine
 	public class Inventory
 
 	{
-		private string ItemName { get; set; }
-        private int ItemInventory { get; set; }
 
-        public Dictionary<string, int> Items { get; set; } = new Dictionary<string, int>
+        public List<string> ItemName { get; set; } = new List<string>
         {
-            {"japp", 10},
-                     {"daim", 10},
-                     {"sour cream onion", 10},
-                     {"coca cola", 10},
-                     {"fanta", 10},
-                     {"sprite", 10},
+            "japp",
+            "daim",
+            "sourcream onion",
+            "coca cola",
+            "fanta",
+            "sprite"
 
         };
+        public List<int> ItemInventory { get; set; } = new List<int>
+        {
+           10,
+           10,
+           10,
+           10,
+           10,
+           10,
+        };
 
+        public List<int> ItemPrice { get; set; } = new List<int>
+        {
+           5,
+           5,
+           5,
+           5,
+           5,
+           5,
+        };
+
+
+
+        
         public Inventory()
 		{
+            
 	
 		}
 
 
-	}
 
-  
+
+        //public Dictionary<string, int> Items { get; set; } = new Dictionary<string, int>
+        //{
+        //             {"japp", 10},
+        //             {"daim", 10},
+        //             {"sour cream onion", 10},
+        //             {"coca cola", 10},
+        //             {"fanta", 10},
+        //             {"sprite", 10},
+
+        //};
+
+    }
+
+
+    
+
 }
 
 
