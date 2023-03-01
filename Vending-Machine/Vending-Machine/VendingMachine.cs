@@ -55,6 +55,10 @@ namespace Vending_Machine
 
         }
 
+        public string ShowProducts()
+        {
+            
+        }
         
 
         
