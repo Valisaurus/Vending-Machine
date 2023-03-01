@@ -6,35 +6,6 @@ namespace Vending_Machine
 
 	{
 
-        public List<string> ItemName { get; set; } = new List<string>
-        {
-            "japp",
-            "daim",
-            "sourcream onion",
-            "coca cola",
-            "fanta",
-            "sprite"
-
-        };
-        public List<int> ItemInventory { get; set; } = new List<int>
-        {
-           10,
-           10,
-           10,
-           10,
-           10,
-           10,
-        };
-
-        public List<int> ItemPrice { get; set; } = new List<int>
-        {
-           5,
-           5,
-           5,
-           5,
-           5,
-           5,
-        };
 
 
 
