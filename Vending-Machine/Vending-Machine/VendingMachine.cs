@@ -1,6 +1,8 @@
 ﻿using System;
 namespace Vending_Machine
 {
+
+
     public class VendingMachine
     {
         public List<string> Menu { get; } = new List<string>
@@ -11,6 +13,21 @@ namespace Vending_Machine
 
 
     };
+
+        public static void Products()
+        {
+            List<Product> Products = new List<Product>();
+
+            Products.Add(new Product("Apple", 2, 10));
+            Products.Add(new Product("Chips", 4, 10));
+            Products.Add(new Product("Korv", 6, 10));
+            Products.Add(new Product("Kebab", 7, 10));
+            Products.Add(new Product("Fisk", 5, 10));
+
+        }
+
+
+
 
 
         public void RunVendingMachine()
@@ -57,12 +74,17 @@ namespace Vending_Machine
 
         public string ShowProducts()
         {
-            
+            foreach(var Product in Products)
+            {
+                Console.WriteLine(Product);
+            }
         }
         
 
         
     }
+
+
 
 
 }

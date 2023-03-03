@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/Users/annabrumark/.nuget/packages/": {}
+    "/Users/valle/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/annabrumark/DEV/Vending-Machine/Vending-Machine/Vending-Machine/Vending-Machine.csproj",
+      "projectUniqueName": "/Users/valle/Documents/GitHub/Vending-Machine/Vending-Machine/Vending-Machine/Vending-Machine.csproj",
       "projectName": "Vending-Machine",
-      "projectPath": "/Users/annabrumark/DEV/Vending-Machine/Vending-Machine/Vending-Machine/Vending-Machine.csproj",
-      "packagesPath": "/Users/annabrumark/.nuget/packages/",
-      "outputPath": "/Users/annabrumark/DEV/Vending-Machine/Vending-Machine/Vending-Machine/obj/",
+      "projectPath": "/Users/valle/Documents/GitHub/Vending-Machine/Vending-Machine/Vending-Machine/Vending-Machine.csproj",
+      "packagesPath": "/Users/valle/.nuget/packages/",
+      "outputPath": "/Users/valle/Documents/GitHub/Vending-Machine/Vending-Machine/Vending-Machine/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/annabrumark/.nuget/NuGet/NuGet.Config"
+        "/Users/valle/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200-preview.22628.1/RuntimeIdentifierGraph.json"
       }
     }
   }
