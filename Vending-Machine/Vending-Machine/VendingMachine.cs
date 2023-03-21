@@ -54,9 +54,17 @@ namespace Vending_Machine
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("Please choose an option from the menu or 'help'");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("------------ MENU ------------");
+                foreach (var menuOption in Menu)
+                {
+                    Console.WriteLine(menuOption);
+                    
+                }
+                Console.WriteLine("------------------------------");
                 Console.ResetColor();
                 var input = Console.ReadLine();
-
+                
                 if (Menu.Contains(input))
                 {
                     Console.WriteLine();
