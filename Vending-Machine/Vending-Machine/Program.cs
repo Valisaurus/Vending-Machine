@@ -1,7 +1,7 @@
 ﻿using Vending_Machine;
 
 var vendingMachine= new VendingMachine();
-//vendingMachine.RunVendingMachine();
-vendingMachine.ShowProducts();
+vendingMachine.RunVendingMachine();
+//vendingMachine.ShowProducts();
 
 
