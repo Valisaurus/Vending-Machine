@@ -14,18 +14,17 @@ namespace Vending_Machine
 
     };
 
-        public static void Products()
-        {
-            List<Product> Products = new List<Product>();
 
-            Products.Add(new Product("Apple", 2, 10));
-            Products.Add(new Product("Chips", 4, 10));
-            Products.Add(new Product("Korv", 6, 10));
-            Products.Add(new Product("Kebab", 7, 10));
-            Products.Add(new Product("Fisk", 5, 10));
+        List<Product> Products { get; set; } = new List<Product> {
 
-        }
+            new Product("Apple", 2, 10),
+            new Product("Chips", 4, 10),
+            new Product("Korv", 6, 10),
+            new Product("Kebab", 7, 10),
+            new Product("Fisk", 5, 10),
 
+
+        };
 
 
 
@@ -72,13 +71,15 @@ namespace Vending_Machine
 
         }
 
-        public string ShowProducts()
+        public void ShowProducts()
         {
             foreach(var Product in Products)
             {
                 Console.WriteLine(Product);
             }
+            
         }
+
         
 
         
