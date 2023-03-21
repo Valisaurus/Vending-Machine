@@ -6,8 +6,6 @@ namespace Vending_Machine
     public class VendingMachine
     {
 
-        public User Customer { get; set; } = new User("Tomer", 10);
-
         public List<string> Menu { get; } = new List<string>
         {
         "products",
@@ -21,9 +19,9 @@ namespace Vending_Machine
     {
 
         new Product("Apple", 2, 10),
-        new Product("Banan", 3, 10),
-        new Product("Apple", 2, 10),
-        new Product("Chips", 4, 10),
+        new Product("Banana", 3, 10),
+        new Product("Granola bar", 2, 10),
+        new Product("Crisps", 4, 10),
         new Product("Korv", 6, 10),
         new Product("Kebab", 7, 5),
         new Product("Fisk", 5, 2),
@@ -32,15 +30,13 @@ namespace Vending_Machine
 
         public void RunVendingMachine(User customer)
         {
-            Console.WriteLine(customer.Name + " " + customer.ShowBalance() + '\n');
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Welcome to VAT vending-machine!");
+            Console.WriteLine($"Welcome {customer.Name}");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("------------ MENU ------------");
             foreach (var menuOption in Menu)
             {
                 Console.WriteLine(menuOption);
-
             }
 
             Console.WriteLine("------------------------------");
@@ -57,18 +53,16 @@ namespace Vending_Machine
                 }
                 else if (command == "purchase")
                 {
-                    PurchaseProduct();
+                    PurchaseProduct(customer);
                 }
                 else if (command == "balance")
                 {
-                    ShowBalance();
-
+                    ShowBalance(customer);
                 }
                 else if (command == "help")
                 {
                     ListHelp();
                 }
-
             }
 
             while (command != "exit");
@@ -105,7 +99,7 @@ namespace Vending_Machine
             {
                 if (product.Stock != 0)
                 {
-                    Console.Write($"{product.Name} {product.Price}$. Stock: ");
+                    Console.Write($"{product.Name}, stock: ");
                     if (product.Stock < 3)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -121,7 +115,7 @@ namespace Vending_Machine
             Console.WriteLine();
         }
 
-        public void PurchaseProduct()
+        public void PurchaseProduct(User customer)
         { 
             string choice = null;
 
@@ -136,9 +130,8 @@ namespace Vending_Machine
 
                 foreach (var product in ListOfProducts)
                 {
-                    Console.Write($"{product.Name} ");
+                    Console.WriteLine($"{product.Name}: ${product.Price}");
                 }
-                Console.Write(": ");
                 choice = Console.ReadLine();
                 Console.WriteLine();
 
@@ -154,14 +147,14 @@ namespace Vending_Machine
 
                         if (choice == "yes")
                         {
-                            if (Customer.ShowBalance() >= product.Price)
+                            if (customer.ShowBalance() >= product.Price)
                             {
                                 Console.ForegroundColor = ConsoleColor.Cyan;
                                 Console.WriteLine("Thank you for choosing VAT!");
                                 Console.ResetColor();
                                 AdjustStock(productChoice);
-                                Customer.UpdateWallet(product.Price);
-                                Console.WriteLine("You have "+Customer.ShowBalance() + " dollars left.");
+                                customer.UpdateWallet(product.Price);
+                                Console.WriteLine("You have "+customer.ShowBalance() + " dollars left.");
                             }
                             else
                             {
@@ -199,9 +192,9 @@ namespace Vending_Machine
             }
         }
 
-        public void ShowBalance()
+        public void ShowBalance(User customer)
         {
-            Console.WriteLine($"${Customer.ShowBalance()}");
+            Console.WriteLine($"Current balance of {customer.Name}: ${customer.ShowBalance()}");
         }
 
         public void ListHelp()

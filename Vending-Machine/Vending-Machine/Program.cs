@@ -2,7 +2,10 @@
 
 var vendingMachine = new VendingMachine();
 
-Console.WriteLine("Welcome to vending machine. Enter customer ID:");
+Console.ForegroundColor = ConsoleColor.Cyan;
+Console.WriteLine("Welcome to VAT vending-machine! Please enter ID.");
+Console.ResetColor();
+
 string? input = null;
 while (input == null || input == "")
 {

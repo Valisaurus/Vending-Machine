@@ -8,11 +8,11 @@ namespace Vending_Machine
         public int Price { get; set; }
         public int Stock { get; set; }
 
-        public Product (string Name, int Price, int Stock)
+        public Product (string name, int price, int stock)
 		{
-			this.Name = Name;
-			this.Price = Price;
-			this.Stock = Stock;
+			Name = name;
+			Price = price;
+			Stock = stock;
 		}
 	}
 }
