@@ -6,6 +6,8 @@ namespace Vending_Machine
     public class VendingMachine
     {
 
+        public User Customer { get; set; } = new User("Tomer", 10);
+
         public List<string> Menu { get; } = new List<string>
         {
         "products",
@@ -28,9 +30,9 @@ namespace Vending_Machine
 
     };
 
-        public void RunVendingMachine()
+        public void RunVendingMachine(User customer)
         {
-
+            Console.WriteLine(customer.Name + " " + customer.ShowBalance() + '\n');
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Welcome to VAT vending-machine!");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -59,7 +61,7 @@ namespace Vending_Machine
                 }
                 else if (command == "balance")
                 {
-                    //ShowBalance();
+                    ShowBalance();
 
                 }
                 else if (command == "help")
@@ -93,10 +95,6 @@ namespace Vending_Machine
 
         public void ShowProducts()
         {
-
-            var ProductStock = new Inventory();
-            var ProductPrices = new Inventory();
-
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("VAT Products and current stock:");
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -124,12 +122,8 @@ namespace Vending_Machine
         }
 
         public void PurchaseProduct()
-        {
-            //var Stock = new Inventory().Items;
-            var Products = new Inventory().Prices;
+        { 
             string choice = null;
-            //selection = Console.ReadLine();
-
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Select a product from the list:");
@@ -147,7 +141,6 @@ namespace Vending_Machine
                 Console.Write(": ");
                 choice = Console.ReadLine();
                 Console.WriteLine();
-                //Console.WriteLine(choice);
 
                 foreach (var product in ListOfProducts)
                 {
@@ -161,10 +154,22 @@ namespace Vending_Machine
 
                         if (choice == "yes")
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("Thank you for choosing VAT!");
-                            Console.ResetColor();
-                            AdjustStock(productChoice);
+                            if (Customer.ShowBalance() >= product.Price)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Thank you for choosing VAT!");
+                                Console.ResetColor();
+                                AdjustStock(productChoice);
+                                Customer.UpdateWallet(product.Price);
+                                Console.WriteLine("You have "+Customer.ShowBalance() + " dollars left.");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("Sorry mate, you have insufficient funds.");
+                                Console.ResetColor();
+                            }
+
                         }
 
                         if (choice == "no")
@@ -182,8 +187,6 @@ namespace Vending_Machine
 
         public void AdjustStock(string inputChoice)
         {
-            //var ProductStock = new Inventory().Items;
-
             foreach (var product in ListOfProducts)
             {
                 int newValue = product.Stock - 1;
@@ -196,6 +199,10 @@ namespace Vending_Machine
             }
         }
 
+        public void ShowBalance()
+        {
+            Console.WriteLine($"${Customer.ShowBalance()}");
+        }
 
         public void ListHelp()
         {

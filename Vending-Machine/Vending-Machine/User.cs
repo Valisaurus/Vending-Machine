@@ -4,13 +4,24 @@ namespace Vending_Machine
 	public class User
 	{
 		public string Name { get; set; }
-		public int Wallet { get; set; }
+		private int Wallet { get; set; }
 
-		public User(string Name, int Wallet) 
+		public User(string name, int wallet) 
 		{
-			this.Name = Name;
-			this.Wallet = Wallet;
+			Name = name;
+			Wallet = wallet;
 		}
+
+		public int ShowBalance()
+		{
+			return this.Wallet;
+		}
+
+		public void UpdateWallet(int price)
+		{
+			this.Wallet -= price;
+		}
+
 	}
 }
 
