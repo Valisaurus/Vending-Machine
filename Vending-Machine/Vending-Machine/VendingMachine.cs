@@ -1,20 +1,36 @@
 ﻿using System;
+using System.Xml.Linq;
+
 namespace Vending_Machine
 {
     public class VendingMachine
     {
+
         public List<string> Menu { get; } = new List<string>
-    {
+        {
         "products",
         "purchase",
         "balance",
         "help",
         "exit",
-    };
+        };
 
+        private List<Product> TestProducts { get; } = new List<Product>
+    {
+
+        new Product("Apple", 2, 10),
+        new Product("Banan", 3, 10),
+        new Product("Apple", 2, 10),
+        new Product("Chips", 4, 10),
+        new Product("Korv", 6, 10),
+        new Product("Kebab", 7, 5),
+        new Product("Fisk", 5, 2),
+
+    };
 
         public void RunVendingMachine()
         {
+
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Welcome to VAT vending-machine!");
             string command;
@@ -50,6 +66,7 @@ namespace Vending_Machine
 
         public string GetMenu()
         {
+
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -76,29 +93,47 @@ namespace Vending_Machine
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("-------------------------------");
             Console.ResetColor();
-            foreach (var price in ProductPrices.Prices)
+
+            foreach (var product in TestProducts)
             {
-                foreach (var name in ProductStock.Items)
+                if (product.Price != 0)
                 {
-                    if (name.Key == price.Key)
+                    Console.Write($"{product.Name} {product.Price}$. Stock: ");
+                    if (product.Stock < 3)
                     {
-                        if (name.Value != 0)
-                        {
-                            Console.Write($"{name.Key} {price.Value}$. Stock: ");
-                            if (name.Value < 3)
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            }
-                            Console.WriteLine($"{name.Value}");
-                            Console.ResetColor();
-                        }
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
                     }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    Console.WriteLine($"{product.Stock}");
+                    Console.ResetColor();
                 }
             }
+            //foreach (var price in ProductPrices.Prices)
+            //{
+            //    foreach (var name in ProductStock.Items)
+            //    {
+            //        if (name.Key == price.Key)
+            //        {
+            //            if (name.Value != 0)
+            //            {
+            //                Console.Write($"{name.Key} {price.Value}$. Stock: ");
+            //                if (name.Value < 3)
+            //                {
+            //                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+            //                }
+            //                else
+            //                {
+            //                    Console.ForegroundColor = ConsoleColor.Green;
+            //                }
+            //                Console.WriteLine($"{name.Value}");
+            //                Console.ResetColor();
+            //            }
+            //        }
+            //    }
+            //}
             Console.WriteLine();
         }
 
