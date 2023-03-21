@@ -15,7 +15,7 @@ namespace Vending_Machine
         "exit",
         };
 
-        private List<Product> TestProducts { get; } = new List<Product>
+        private List<Product> ListOfProducts { get; } = new List<Product>
     {
 
         new Product("Apple", 2, 10),
@@ -103,9 +103,9 @@ namespace Vending_Machine
             Console.WriteLine("-------------------------------");
             Console.ResetColor();
 
-            foreach (var product in TestProducts)
+            foreach (var product in ListOfProducts)
             {
-                if (product.Price != 0)
+                if (product.Stock != 0)
                 {
                     Console.Write($"{product.Name} {product.Price}$. Stock: ");
                     if (product.Stock < 3)
@@ -120,29 +120,6 @@ namespace Vending_Machine
                     Console.ResetColor();
                 }
             }
-            //foreach (var price in ProductPrices.Prices)
-            //{
-            //    foreach (var name in ProductStock.Items)
-            //    {
-            //        if (name.Key == price.Key)
-            //        {
-            //            if (name.Value != 0)
-            //            {
-            //                Console.Write($"{name.Key} {price.Value}$. Stock: ");
-            //                if (name.Value < 3)
-            //                {
-            //                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-            //                }
-            //                else
-            //                {
-            //                    Console.ForegroundColor = ConsoleColor.Green;
-            //                }
-            //                Console.WriteLine($"{name.Value}");
-            //                Console.ResetColor();
-            //            }
-            //        }
-            //    }
-            //}
             Console.WriteLine();
         }
 
@@ -163,22 +140,22 @@ namespace Vending_Machine
             while (choice == null)
             {
 
-                foreach (var product in Products)
+                foreach (var product in ListOfProducts)
                 {
-                    Console.Write($"{product.Key} ");
+                    Console.Write($"{product.Name} ");
                 }
                 Console.Write(": ");
                 choice = Console.ReadLine();
                 Console.WriteLine();
                 //Console.WriteLine(choice);
 
-                foreach (var product in Products)
+                foreach (var product in ListOfProducts)
                 {
-                    if (choice == product.Key)
+                    if (choice == product.Name)
                     {
                         var productChoice = choice;
 
-                        Console.Write($"You selected {product.Key}. Do you want to purchase it? {product.Value}$ (yes / no): ");
+                        Console.Write($"You selected {product.Name}. Do you want to purchase it? {product.Price}$ (yes / no): ");
                         choice = Console.ReadLine();
                         Console.WriteLine();
 
@@ -205,21 +182,16 @@ namespace Vending_Machine
 
         public void AdjustStock(string inputChoice)
         {
-            var ProductStock = new Inventory().Items;
+            //var ProductStock = new Inventory().Items;
 
-            foreach (var product in ProductStock)
+            foreach (var product in ListOfProducts)
             {
-                int newValue = product.Value - 1;
-                if (inputChoice == product.Key)
+                int newValue = product.Stock - 1;
+                if (inputChoice == product.Name)
                 {
-                    Console.WriteLine($"1 {product.Value}");
-                    Console.WriteLine($"2 {newValue}");
 
-                    //--ProductStock[inputChoice];
-                    Console.WriteLine($"3 {ProductStock[inputChoice]}");
-                    //ProductStock.TryAdd(inputChoice, newValue);
-                    var insertValue = ProductStock[inputChoice] = newValue;
-                    Console.WriteLine($"4 {insertValue}");
+                    product.Stock = newValue;
+
                 }
             }
         }
