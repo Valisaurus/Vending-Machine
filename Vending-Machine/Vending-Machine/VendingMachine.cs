@@ -11,6 +11,7 @@ namespace Vending_Machine
         "products",
         "purchase",
         "balance",
+        "receipt",
         "help",
         "exit",
         };
@@ -27,6 +28,8 @@ namespace Vending_Machine
         new Product("Fisk", 5, 2),
 
     };
+
+        public List<Product> Receipt { get; set; } = new List<Product> { };
 
         public void RunVendingMachine(User customer)
         {
@@ -58,6 +61,10 @@ namespace Vending_Machine
                 else if (command == "balance")
                 {
                     ShowBalance(customer);
+                }
+                else if (command == "receipt")
+                {
+                    ShowReceipt();
                 }
                 else if (command == "help")
                 {
@@ -155,6 +162,10 @@ namespace Vending_Machine
                                 AdjustStock(productChoice);
                                 customer.UpdateWallet(product.Price);
                                 Console.WriteLine("You have "+customer.ShowBalance() + " dollars left.");
+
+
+                                Receipt.Add(product);
+
                             }
                             else
                             {
@@ -195,6 +206,24 @@ namespace Vending_Machine
         public void ShowBalance(User customer)
         {
             Console.WriteLine($"Current balance of {customer.Name}: ${customer.ShowBalance()}");
+        }
+
+
+        public void ShowReceipt() {
+            if (Receipt.Count == 0)
+            {
+                Console.WriteLine("You haven't purchased anything yet.");
+            }
+            else
+            {
+            Console.WriteLine("Receipt:\n");
+            foreach (var product in Receipt)
+            {
+                Console.WriteLine($"{product.Name}, ${product.Price}");
+            }
+            int totalPrice = Receipt.Sum(product => product.Price);
+            Console.WriteLine($"\nTotal: ${totalPrice}");
+            }
         }
 
         public void ListHelp()
