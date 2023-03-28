@@ -3,7 +3,7 @@
 var vendingMachine = new VendingMachine();
 
 Console.ForegroundColor = ConsoleColor.Cyan;
-Console.WriteLine("Welcome to VAT vending-machine! Please enter ID.");
+Console.WriteLine("Welcome to TRAV vending-machine! Please enter ID.");
 Console.ResetColor();
 
 string? input = null;
